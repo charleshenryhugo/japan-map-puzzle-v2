@@ -1,4 +1,4 @@
-const prefectures = [
+export default [
   // #FF8585 => #FFE65E
   'hokkaido',
 
@@ -62,5 +62,3 @@ const prefectures = [
   'kagoshima',
   'okinawa-kagoshima',
 ];
-
-export default prefectures;

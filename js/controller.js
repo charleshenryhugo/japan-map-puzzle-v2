@@ -1,7 +1,16 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import prefectures from './prefectures.js';
-import prefectureSvgs from '../mapResources/*.svg';
+import {
+  prefectures,
+  prefectureSvgs,
+  state,
+  EASY,
+  MEDIUM,
+  EXPERT,
+  HARD,
+} from './model.js';
+
+import mapContainerView from './views/mapContainerView.js';
 
 const mapContainer = document.querySelector('.map-container');
 const whiteMap = mapContainer.querySelector('svg');
@@ -16,20 +25,16 @@ const btnGiveUp = timer.querySelector('.btn--give-up');
 const controlBox = document.querySelector('.control-box');
 const btnStart = controlBox.querySelector('.btn--start');
 
-const [EASY, MEDIUM, HARD, EXPERT] = [0, 1, 2, 3];
-let gameMode = EASY;
-let matchedPieces = 0;
-
 // switch game mode on click
 controlBox.addEventListener('click', e => {
   const target = e.target.closest('.btn[data-mode]');
   if (!target) return;
 
   controlBox
-    .querySelector(`.btn[data-mode="${gameMode}"]`)
+    .querySelector(`.btn[data-mode="${state.gameMode}"]`)
     .classList.remove('btn--selected');
   target.classList.add('btn--selected');
-  gameMode = +target.dataset.mode;
+  state.gameMode = +target.dataset.mode;
 });
 
 /**
@@ -105,7 +110,7 @@ const makePuzzlePiecesDraggable = function () {
 
     const pieceClone = makePuzzlePiece(
       piece.dataset.prefecture,
-      gameMode === EASY
+      state.gameMode === EASY
     );
     pieceClone.className = 'puzzle-piece--dragged';
     pieceClone.style.left = Number.parseFloat(clientRect.x) + 'px';
@@ -126,13 +131,13 @@ const makePuzzlePiecesDraggable = function () {
       if (pieceClone.arrived(30)) {
         pieceClone.matchToTarget();
         piece.remove();
-        matchedPieces++;
+        state.matchedPieces++;
       } else {
         pieceClone.remove();
         piece.classList.remove('transparent');
       }
 
-      if (matchedPieces >= prefectures.length) {
+      if (state.matchedPieces >= prefectures.length) {
         document.querySelector('.timer--text').textContent += ' 🥳COMPLETED!';
       }
     };
@@ -148,12 +153,12 @@ const initMapContainer = function () {
     .querySelectorAll('[data-prefecture]')
     .forEach(piece => piece.remove());
 
-  if (gameMode === HARD) {
+  if (state.gameMode === HARD) {
     whiteMapInnerFrame.style.opacity = 0;
     return;
   }
 
-  if (gameMode === EXPERT) {
+  if (state.gameMode === EXPERT) {
     whiteMapInnerFrame.style.opacity = 0;
     whiteMapOuterFrame.style.opacity = 0;
   }
@@ -163,7 +168,9 @@ const initMapContainer = function () {
  * create and randomly place all puzzle pieces as child elements inside the puzzlePiecesBox
  * @param prefectureNameHints
  */
-const initPuzzlePieces = function (prefectureNameHints = gameMode === EASY) {
+const initPuzzlePieces = function (
+  prefectureNameHints = state.gameMode === EASY
+) {
   while (puzzlePiecesBox.firstElementChild)
     puzzlePiecesBox.lastElementChild.remove();
 
@@ -195,7 +202,7 @@ const initGame = function () {
   whiteMapInnerFrame.style.opacity = 1;
   whiteMapOuterFrame.style.opacity = 1;
 
-  matchedPieces = 0;
+  state.matchedPieces = 0;
 
   matchAllPuzzlePieces();
   makePuzzlePiecesDraggable();
