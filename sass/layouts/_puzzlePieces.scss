@@ -1,0 +1,15 @@
+.puzzle-pieces {
+  @include bordered;
+
+  float: right;
+  right: 0;
+  top: 0;
+  width: 30vw;
+  height: 100vh;
+  position: relative;
+  overflow: scroll;
+
+  .transparent {
+    opacity: 0.5;
+  }
+}

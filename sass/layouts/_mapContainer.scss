@@ -1,0 +1,13 @@
+.map-container {
+  @include bordered;
+  border-right: 1px solid $color-gray-dark;
+  float: left;
+  left: 0;
+  top: 0;
+  width: 70vw;
+  height: 100vh;
+  overflow: scroll;
+  padding: 1rem;
+
+  position: relative;
+}

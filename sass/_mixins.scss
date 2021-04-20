@@ -1,0 +1,12 @@
+@mixin bordered {
+  // border: 0 solid red;
+  // border: 1px solid red;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}

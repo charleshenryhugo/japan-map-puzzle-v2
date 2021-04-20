@@ -1,0 +1,15 @@
+.timer {
+  @include bordered;
+
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  &--text {
+    @include bordered;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    font-weight: normal;
+  }
+}
