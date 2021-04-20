@@ -1,0 +1,111 @@
+html {
+  font-size: 62.5%;
+  /*10px*/ }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: bold; }
+
+.hidden {
+  display: none; }
+
+.map-container {
+  border-right: 1px solid #686868;
+  float: left;
+  left: 0;
+  top: 0;
+  width: 70vw;
+  height: 100vh;
+  overflow: scroll;
+  padding: 1rem;
+  position: relative; }
+
+.control-box {
+  float: right;
+  right: 0;
+  top: 0;
+  width: 30vw;
+  height: 100vh;
+  position: relative; }
+  .control-box .game-mode {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%); }
+
+.puzzle-pieces {
+  float: right;
+  right: 0;
+  top: 0;
+  width: 30vw;
+  height: 100vh;
+  position: relative;
+  overflow: scroll; }
+  .puzzle-pieces .transparent {
+    opacity: 0.5; }
+
+.puzzle-piece--initial {
+  position: relative;
+  margin: 1rem;
+  display: inline-block; }
+
+.puzzle-piece--dragged {
+  position: fixed; }
+
+.puzzle-piece--matched {
+  position: absolute; }
+
+.btn {
+  border: 1px solid gray;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem; }
+  .btn:link, .btn:visited {
+    text-decoration: none; }
+  .btn--easy, .btn--medium, .btn--hard, .btn--expert {
+    padding: 1rem 4rem;
+    background-color: #f5f5dc;
+    color: #0b0b0b; }
+    .btn--easy:hover, .btn--medium:hover, .btn--hard:hover, .btn--expert:hover {
+      background-color: #f9d4a7; }
+  .btn--selected {
+    background-color: #f9d4a7; }
+  .btn--start:hover, .btn--give-up:hover {
+    background-color: #bbbbbb;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
+  .btn--start:active, .btn--give-up:active {
+    background-color: #dddddd;
+    box-shadow: none; }
+  .btn--start {
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    background-color: white;
+    color: #0b0b0b;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+  .btn--give-up {
+    border-radius: 10px;
+    padding: 1rem 3rem;
+    background-color: white;
+    color: #0b0b0b; }
+
+.timer {
+  position: absolute;
+  top: 1rem;
+  left: 1rem; }
+  .timer--text {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    font-weight: normal; }
