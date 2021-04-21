@@ -7,9 +7,15 @@
 
   &--text {
     @include bordered;
-    display: block;
+    display: inline-block;
     margin-bottom: 0.5rem;
     font-size: 3rem;
     font-weight: normal;
+  }
+
+  &--congrats-msg {
+    font-size: 3rem;
+    display: inline-block;
+    margin-left: 1rem;
   }
 }

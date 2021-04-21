@@ -13,7 +13,6 @@ class PuzzlePiecesView {
    * @param {boolean} prefectureNameHints
    */
   init(prefectures, prefectureSvgs, prefectureNameHints = true) {
-    this._show();
     this._clearAllPuzzlePieces();
     const srcFileNameSuffix = prefectureNameHints ? '-jp' : '';
 
@@ -29,6 +28,8 @@ class PuzzlePiecesView {
 
         _this.append(piece);
       });
+
+    return this;
   }
 
   _clearAllPuzzlePieces() {
@@ -45,6 +46,8 @@ class PuzzlePiecesView {
    * @param {function} mouseupHandler
    */
   makePuzzlePiecesDraggable(mouseupHandler) {
+    if (this._parentElement.onmousedown) return this;
+
     this._parentElement.onmousedown = function (e) {
       e.preventDefault();
 
@@ -78,13 +81,15 @@ class PuzzlePiecesView {
         mouseupHandler(puzzlePieceClone, piece);
       };
     };
+
+    return this;
   }
 
-  _hide() {
+  hide() {
     this._parentElement.classList.add('hidden');
   }
 
-  _show() {
+  show() {
     this._parentElement.classList.remove('hidden');
   }
 }

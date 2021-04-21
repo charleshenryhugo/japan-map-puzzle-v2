@@ -28,17 +28,37 @@ body {
   .btn:link, .btn:visited {
     text-decoration: none; }
   .btn--easy, .btn--medium, .btn--hard, .btn--expert {
+    position: relative;
     padding: 1rem 4rem;
     background-color: #f5f5dc;
     color: #0b0b0b; }
     .btn--easy:hover, .btn--medium:hover, .btn--hard:hover, .btn--expert:hover {
       background-color: #f9d4a7; }
+    .btn--easy:hover::after, .btn--medium:hover::after, .btn--hard:hover::after, .btn--expert:hover::after {
+      content: "";
+      font-size: 1rem;
+      color: #ffffff;
+      position: absolute;
+      right: 105%;
+      width: 50%;
+      padding: 1rem;
+      background-color: #686868;
+      clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+      z-index: 1; }
+  .btn--easy:hover::after {
+    content: "Simple enough."; }
+  .btn--medium:hover::after {
+    content: "Not that hard"; }
+  .btn--hard:hover::after {
+    content: "May take some time."; }
+  .btn--expert:hover::after {
+    content: "Seriously, you wanna do this?"; }
   .btn--selected {
     background-color: #f9d4a7; }
-  .btn--start:hover, .btn--give-up:hover {
+  .btn--start:hover, .btn--give-up:hover, .btn--home:hover {
     border: 1px solid #0b0b0b;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
-  .btn--start:active, .btn--give-up:active {
+  .btn--start:active, .btn--give-up:active, .btn--home:active {
     box-shadow: none; }
   .btn--start {
     border-radius: 10px;
@@ -49,9 +69,9 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%); }
-  .btn--give-up {
+  .btn--give-up, .btn--home {
     border-radius: 10px;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     background-color: white;
     color: #0b0b0b; }
 
@@ -71,10 +91,14 @@ body {
   top: 1rem;
   left: 1rem; }
   .timer--text {
-    display: block;
+    display: inline-block;
     margin-bottom: 0.5rem;
     font-size: 3rem;
     font-weight: normal; }
+  .timer--congrats-msg {
+    font-size: 3rem;
+    display: inline-block;
+    margin-left: 1rem; }
 
 .control-box {
   float: right;

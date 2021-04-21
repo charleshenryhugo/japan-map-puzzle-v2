@@ -5,14 +5,10 @@ import { prefectures, prefectureSvgs, levels } from './model.js';
 import * as model from './model.js';
 
 import controlBoxView from './views/controlBoxView.js';
-import timerView from './views/timerView.js';
 import mapContainerView from './views/mapContainerView.js';
 import puzzlePiecesView from './views/puzzlePiecesView.js';
 import PuzzlePiece from './views/puzzlePiece.js';
-
-const setGameMode = function (mode) {
-  model.setGameMode(+mode);
-};
+import timerView from './views/timerView.js';
 
 /**
  *
@@ -38,42 +34,40 @@ const controlPuzzlePieces = function (puzzlePieceClone, piece) {
   }
 
   if (model.allPiecesMatched()) {
-    document.querySelector('.timer--text').textContent = ' 🥳COMPLETED!';
+    timerView.stopTimer().displayCheerMessage();
   }
 };
 
 const startGame = function () {
-  timerView.init();
+  timerView.init().startTimer().show();
 
   controlBoxView.hide();
 
   mapContainerView.init(
-    model.isGameMode(levels.EASY) || model.isGameMode(levels.MEDIUM),
+    model.isGameMode(levels.EASY, levels.MEDIUM),
     !model.isGameMode(levels.EXPERT)
   );
-  puzzlePiecesView.init(
-    prefectures,
-    prefectureSvgs,
-    model.isGameMode(levels.EASY)
-  );
+
+  puzzlePiecesView
+    .init(prefectures, prefectureSvgs, model.isGameMode(levels.EASY))
+    .show();
 };
 
 const initGame = function () {
-  timerView.hide();
+  timerView.init().hide();
 
   model.initMatches();
 
-  // prettier-ignore
   controlBoxView
     .init()
-    .addClickHandler(setGameMode)
+    .addClickHandler(model.setGameMode)
     .addStartHandler(startGame);
 
   mapContainerView
     .init(true, true)
     .matchAllPuzzlePieces(prefectures, prefectureSvgs, true);
 
-  puzzlePiecesView.makePuzzlePiecesDraggable(controlPuzzlePieces);
+  puzzlePiecesView.makePuzzlePiecesDraggable(controlPuzzlePieces).hide();
 };
 
 timerView.addGiveUpHandler(initGame);

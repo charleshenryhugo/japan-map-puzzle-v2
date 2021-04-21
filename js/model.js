@@ -19,7 +19,7 @@ const state = {
  * @param {number} mode
  */
 export const setGameMode = function (mode) {
-  state.gameMode = mode;
+  state.gameMode = +mode;
 };
 
 /**
@@ -30,11 +30,14 @@ export const getGameMode = function () {
 };
 
 /**
- * @param {number} mode
+ * @param {Array.<number>} modes
  * @returns {boolean}
  */
-export const isGameMode = function (mode) {
-  return state.gameMode === mode;
+export const isGameMode = function (...modes) {
+  for (const mode of modes) {
+    if (state.gameMode === mode) return true;
+  }
+  return false;
 };
 
 /**

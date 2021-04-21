@@ -15,6 +15,7 @@
   &--medium,
   &--hard,
   &--expert {
+    position: relative;
     padding: 1rem 4rem;
     background-color: $color-beige;
     color: $color-black;
@@ -22,6 +23,37 @@
     &:hover {
       background-color: $color-beige-dark;
     }
+
+    &:hover::after {
+      content: "";
+      font-size: 1rem;
+      color: $color-white;
+
+      position: absolute;
+      right: 105%;
+      width: 50%;
+      padding: 1rem;
+
+      background-color: $color-gray-dark;
+      clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+      z-index: 1;
+    }
+  }
+
+  &--easy:hover::after {
+    content: "Simple enough.";
+  }
+
+  &--medium:hover::after {
+    content: "Not that hard";
+  }
+
+  &--hard:hover::after {
+    content: "May take some time.";
+  }
+
+  &--expert:hover::after {
+    content: "Seriously, you wanna do this?";
   }
 
   &--selected {
@@ -29,14 +61,16 @@
   }
 
   &--start:hover,
-  &--give-up:hover {
+  &--give-up:hover,
+  &--home:hover {
     // background-color: $color-gray;
     border: 1px solid $color-black;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   }
 
   &--start:active,
-  &--give-up:active {
+  &--give-up:active,
+  &--home:active {
     // background-color: $color-gray-light;
     box-shadow: none;
   }
@@ -53,9 +87,10 @@
     transform: translateX(-50%);
   }
 
-  &--give-up {
+  &--give-up,
+  &--home {
     border-radius: 10px;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     background-color: white;
     color: $color-black;
   }
