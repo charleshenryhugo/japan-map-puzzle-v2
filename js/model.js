@@ -9,3 +9,10 @@ export const state = {
   gameMode: EASY,
   matchedPieces: 0,
 };
+
+/**
+ * @param {number} mode
+ */
+export const setGameMode = function (mode) {
+  state.gameMode = mode;
+};

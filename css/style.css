@@ -36,10 +36,9 @@ body {
   .btn--selected {
     background-color: #f9d4a7; }
   .btn--start:hover, .btn--give-up:hover {
-    background-color: #bbbbbb;
+    border: 1px solid #0b0b0b;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
   .btn--start:active, .btn--give-up:active {
-    background-color: #dddddd;
     box-shadow: none; }
   .btn--start {
     border-radius: 10px;
