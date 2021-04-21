@@ -1,14 +1,8 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import {
-  prefectures,
-  prefectureSvgs,
-  state,
-  EASY,
-  MEDIUM,
-  EXPERT,
-  HARD,
-} from './model.js';
+
+import { prefectures, prefectureSvgs, levels } from './model.js';
+import * as model from './model.js';
 
 import controlBoxView from './views/controlBoxView.js';
 import timerView from './views/timerView.js';
@@ -17,7 +11,7 @@ import puzzlePiecesView from './views/puzzlePiecesView.js';
 import PuzzlePiece from './views/puzzlePiece.js';
 
 const setGameMode = function (mode) {
-  state.gameMode = +mode;
+  model.setGameMode(+mode);
 };
 
 /**
@@ -37,13 +31,13 @@ const controlPuzzlePieces = function (puzzlePieceClone, piece) {
       mapContainerView.scrollLeft()
     );
     piece.remove();
-    state.matchedPieces++;
+    model.addOneMatch();
   } else {
     puzzlePieceClone.destroy();
     piece.classList.remove('transparent');
   }
 
-  if (state.matchedPieces >= prefectures.length) {
+  if (model.allPiecesMatched()) {
     document.querySelector('.timer--text').textContent = ' 🥳COMPLETED!';
   }
 };
@@ -54,16 +48,20 @@ const startGame = function () {
   controlBoxView.hide();
 
   mapContainerView.init(
-    state.gameMode === EASY || state.gameMode === MEDIUM,
-    state.gameMode !== EXPERT
+    model.isGameMode(levels.EASY) || model.isGameMode(levels.MEDIUM),
+    !model.isGameMode(levels.EXPERT)
   );
-  puzzlePiecesView.init(prefectures, prefectureSvgs, state.gameMode === EASY);
+  puzzlePiecesView.init(
+    prefectures,
+    prefectureSvgs,
+    model.isGameMode(levels.EASY)
+  );
 };
 
 const initGame = function () {
   timerView.hide();
 
-  state.matchedPieces = 0;
+  model.initMatches();
 
   // prettier-ignore
   controlBoxView

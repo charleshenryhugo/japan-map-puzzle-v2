@@ -3,10 +3,15 @@ import prefectureSvgs from '../mapResources/*.svg';
 
 export { prefectures, prefectureSvgs };
 
-export const [EASY, MEDIUM, HARD, EXPERT] = [0, 1, 2, 3];
+export const levels = Object.freeze({
+  EASY: 0,
+  MEDIUM: 1,
+  HARD: 2,
+  EXPERT: 3,
+});
 
-export const state = {
-  gameMode: EASY,
+const state = {
+  gameMode: levels.EASY,
   matchedPieces: 0,
 };
 
@@ -15,4 +20,38 @@ export const state = {
  */
 export const setGameMode = function (mode) {
   state.gameMode = mode;
+};
+
+/**
+ * @returns {number}
+ */
+export const getGameMode = function () {
+  return state.gameMode;
+};
+
+/**
+ * @param {number} mode
+ * @returns {boolean}
+ */
+export const isGameMode = function (mode) {
+  return state.gameMode === mode;
+};
+
+/**
+ * @returns {number}
+ */
+export const addOneMatch = function () {
+  return (state.matchedPieces += 1);
+};
+
+export const initMatches = function () {
+  state.matchedPieces = 0;
+};
+
+/**
+ * check whether all pieces are matched already
+ * @returns {boolean}
+ */
+export const allPiecesMatched = function () {
+  return state.matchedPieces >= prefectures.length;
 };

@@ -1,5 +1,3 @@
-import { state } from '../model';
-
 class ControlBoxView {
   constructor() {
     this._parentElement = document.querySelector('.control-box');
@@ -17,8 +15,9 @@ class ControlBoxView {
       if (!target) return;
 
       this._parentElement
-        .querySelector(`.btn[data-mode="${state.gameMode}"]`)
-        .classList.remove('btn--selected');
+        .querySelectorAll('.btn[data-mode]')
+        .forEach(btn => btn.classList.remove('btn--selected'));
+
       target.classList.add('btn--selected');
 
       handler(target.dataset.mode);
