@@ -18,11 +18,17 @@ npm run dev
 npm run build
 ```
 
-## Old Version
-access version1 here: https://japanmappuzzle-zhuyue.netlify.app/
+## Previous Version
+Access version1 here: https://japanmappuzzle-zhuyue.netlify.app/
 
-The 1st version of this game was quite problematic:
-- too large sized svgs
-- overlapped puzzle pieces
+## Improvements since Version1
+### dev
+- Use parcel@1 to bundle and polyfill modern javascript
+- Use mvc architecture to organize javascript
+- Use npm scripts to run or build site
+- Use sass(scss) to organize css
 
-
+### features
+- Add "expert" game mode
+- Avoid puzzle pieces from overlapping each other
+- Make responsive button elements
