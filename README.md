@@ -17,3 +17,12 @@ npm run dev
 ```
 npm run build
 ```
+
+## Old Version
+access version1 here: https://japanmappuzzle-zhuyue.netlify.app/
+
+The 1st version of this game was quite problematic:
+- too large sized svgs
+- overlapped puzzle pieces
+
+
