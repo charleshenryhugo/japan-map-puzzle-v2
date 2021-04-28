@@ -5,8 +5,8 @@
 
 @mixin clearfix {
   &::after {
-    content: "";
-    clear: both;
     display: block;
+    clear: both;
+    content: '';
   }
 }

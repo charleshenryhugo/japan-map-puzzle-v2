@@ -1,10 +1,10 @@
 .btn {
   @include bordered;
-  border: 1px solid gray;
   display: block;
+  font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
-  font-size: 2rem;
+  border: 1px solid $color-gray;
 
   &:link,
   &:visited {
@@ -17,47 +17,64 @@
   &--expert {
     position: relative;
     padding: 1rem 4rem;
-    background-color: $color-beige;
     color: $color-black;
+    background-color: $color-beige;
 
     &:hover {
       background-color: $color-beige-dark;
     }
 
     &:hover::after {
-      content: "";
-      font-size: 1rem;
-      color: $color-white;
-
       position: absolute;
       right: 105%;
+      z-index: 1;
       width: 50%;
       padding: 1rem;
-
+      color: $color-white;
+      font-size: 1rem;
       background-color: $color-gray-dark;
+      content: '';
       clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
-      z-index: 1;
     }
   }
 
   &--easy:hover::after {
-    content: "Simple enough.";
+    content: 'Simple enough.';
   }
 
   &--medium:hover::after {
-    content: "Not that hard";
+    content: 'Not that hard';
   }
 
   &--hard:hover::after {
-    content: "May take some time.";
+    content: 'May take some time.';
   }
 
   &--expert:hover::after {
-    content: "Seriously, you wanna do this?";
+    content: 'Seriously, you wanna do this?';
   }
 
   &--selected {
     background-color: $color-beige-dark;
+  }
+
+  &--start {
+    position: absolute;
+    left: 50%;
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    color: $color-black;
+    background-color: $color-white;
+    border-radius: 10px;
+    transform: translateX(-50%);
+  }
+
+  &--give-up,
+  &--home {
+    padding: 1rem 2rem;
+    color: $color-black;
+    background-color: $color-white;
+    border-radius: 10px;
   }
 
   &--start:hover,
@@ -65,7 +82,7 @@
   &--home:hover {
     // background-color: $color-gray;
     border: 1px solid $color-black;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 5px rgba($color-black, 0.2);
   }
 
   &--start:active,
@@ -73,25 +90,5 @@
   &--home:active {
     // background-color: $color-gray-light;
     box-shadow: none;
-  }
-
-  &--start {
-    border-radius: 10px;
-    margin-top: 2rem;
-    padding: 1rem 3rem;
-    background-color: white;
-    color: $color-black;
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &--give-up,
-  &--home {
-    border-radius: 10px;
-    padding: 1rem 2rem;
-    background-color: white;
-    color: $color-black;
   }
 }

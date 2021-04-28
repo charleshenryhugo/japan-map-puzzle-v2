@@ -1,12 +1,12 @@
-@import "_base";
-@import "_mixins";
-@import "_typography";
-@import "_variables";
+@import '_variables';
+@import '_typography';
+@import '_base';
+@import '_mixins';
 
-@import "components/buttons";
-@import "components/puzzlePiece";
-@import "components/timer";
+@import 'components/buttons';
+@import 'components/puzzlePiece';
+@import 'components/timer';
 
-@import "layouts/controlBox";
-@import "layouts/mapContainer";
-@import "layouts/puzzlePieces";
+@import 'layouts/controlBox';
+@import 'layouts/mapContainer';
+@import 'layouts/puzzlePieces';

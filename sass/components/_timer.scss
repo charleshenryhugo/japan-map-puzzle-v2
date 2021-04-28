@@ -1,6 +1,5 @@
 .timer {
   @include bordered;
-
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -9,13 +8,13 @@
     @include bordered;
     display: inline-block;
     margin-bottom: 0.5rem;
+    font-weight: $font-weight-normal;
     font-size: 3rem;
-    font-weight: normal;
   }
 
   &--congrats-msg {
-    font-size: 3rem;
     display: inline-block;
     margin-left: 1rem;
+    font-size: 3rem;
   }
 }

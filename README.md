@@ -8,6 +8,11 @@ Developed in ES6, SASS, and HTML
 
 Bundled and polyfilled with Parcel@1
 
+## install modules
+```
+npm install
+```
+
 ## start to dev (output to ./dist)
 ```
 npm run dev
@@ -32,3 +37,30 @@ Access version1 here: https://japanmappuzzle-zhuyue.netlify.app/
 - Add "expert" game mode
 - Avoid puzzle pieces from overlapping each other
 - Make responsive button elements
+
+
+## linters
+prettier
+stylelint
+
+.vscode/setting.json
+```{json}
+{
+    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": null,
+
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true,
+    },
+    "prettier.resolveGlobalModules": false,
+    "prettier.configPath": ".prettierrc",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+}
+```

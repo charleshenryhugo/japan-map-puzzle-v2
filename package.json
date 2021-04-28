@@ -14,7 +14,12 @@
   "devDependencies": {
     "node-sass": "^5.0.0",
     "parcel": "^1.12.3",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "stylelint": "^13.13.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
     "core-js": "^3.10.2",

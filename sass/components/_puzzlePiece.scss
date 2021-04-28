@@ -2,8 +2,8 @@
   &--initial {
     @include bordered;
     position: relative;
-    margin: 1rem;
     display: inline-block;
+    margin: 1rem;
   }
 
   &--dragged {

@@ -1,3 +1,7 @@
+body {
+  font-weight: 700;
+  font-family: sans-serif; }
+
 html {
   font-size: 62.5%;
   /*10px*/ }
@@ -5,9 +9,9 @@ html {
 *,
 *::before,
 *::after {
+  box-sizing: inherit;
   margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
+  padding: 0; }
 
 body {
   box-sizing: border-box; }
@@ -15,70 +19,66 @@ body {
 .hidden {
   display: none; }
 
-body {
-  font-family: sans-serif;
-  font-weight: bold; }
-
 .btn {
-  border: 1px solid gray;
   display: block;
+  font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
-  font-size: 2rem; }
+  border: 1px solid #bbbbbb; }
   .btn:link, .btn:visited {
     text-decoration: none; }
   .btn--easy, .btn--medium, .btn--hard, .btn--expert {
     position: relative;
     padding: 1rem 4rem;
-    background-color: #f5f5dc;
-    color: #0b0b0b; }
+    color: #0b0b0b;
+    background-color: #f5f5dc; }
     .btn--easy:hover, .btn--medium:hover, .btn--hard:hover, .btn--expert:hover {
       background-color: #f9d4a7; }
     .btn--easy:hover::after, .btn--medium:hover::after, .btn--hard:hover::after, .btn--expert:hover::after {
-      content: "";
-      font-size: 1rem;
-      color: #ffffff;
       position: absolute;
       right: 105%;
+      z-index: 1;
       width: 50%;
       padding: 1rem;
+      color: #ffffff;
+      font-size: 1rem;
       background-color: #686868;
-      clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
-      z-index: 1; }
+      content: '';
+      clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%); }
   .btn--easy:hover::after {
-    content: "Simple enough."; }
+    content: 'Simple enough.'; }
   .btn--medium:hover::after {
-    content: "Not that hard"; }
+    content: 'Not that hard'; }
   .btn--hard:hover::after {
-    content: "May take some time."; }
+    content: 'May take some time.'; }
   .btn--expert:hover::after {
-    content: "Seriously, you wanna do this?"; }
+    content: 'Seriously, you wanna do this?'; }
   .btn--selected {
     background-color: #f9d4a7; }
-  .btn--start:hover, .btn--give-up:hover, .btn--home:hover {
-    border: 1px solid #0b0b0b;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
-  .btn--start:active, .btn--give-up:active, .btn--home:active {
-    box-shadow: none; }
   .btn--start {
-    border-radius: 10px;
-    margin-top: 2rem;
-    padding: 1rem 3rem;
-    background-color: white;
-    color: #0b0b0b;
     position: absolute;
     left: 50%;
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    color: #0b0b0b;
+    background-color: #ffffff;
+    border-radius: 10px;
     transform: translateX(-50%); }
   .btn--give-up, .btn--home {
-    border-radius: 10px;
     padding: 1rem 2rem;
-    background-color: white;
-    color: #0b0b0b; }
+    color: #0b0b0b;
+    background-color: #ffffff;
+    border-radius: 10px; }
+  .btn--start:hover, .btn--give-up:hover, .btn--home:hover {
+    border: 1px solid #0b0b0b;
+    box-shadow: 0 5px 5px rgba(11, 11, 11, 0.2); }
+  .btn--start:active, .btn--give-up:active, .btn--home:active {
+    box-shadow: none; }
 
 .puzzle-piece--initial {
   position: relative;
-  margin: 1rem;
-  display: inline-block; }
+  display: inline-block;
+  margin: 1rem; }
 
 .puzzle-piece--dragged {
   position: fixed; }
@@ -93,44 +93,44 @@ body {
   .timer--text {
     display: inline-block;
     margin-bottom: 0.5rem;
-    font-size: 3rem;
-    font-weight: normal; }
+    font-weight: 400;
+    font-size: 3rem; }
   .timer--congrats-msg {
-    font-size: 3rem;
     display: inline-block;
-    margin-left: 1rem; }
+    margin-left: 1rem;
+    font-size: 3rem; }
 
 .control-box {
-  float: right;
-  right: 0;
+  position: relative;
   top: 0;
+  right: 0;
+  float: right;
   width: 30vw;
-  height: 100vh;
-  position: relative; }
+  height: 100vh; }
   .control-box .game-mode {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -60%); }
 
 .map-container {
-  border-right: 1px solid #686868;
-  float: left;
-  left: 0;
+  position: relative;
   top: 0;
+  left: 0;
+  float: left;
   width: 70vw;
   height: 100vh;
-  overflow: scroll;
   padding: 1rem;
-  position: relative; }
+  overflow: scroll;
+  border-right: 1px solid #686868; }
 
 .puzzle-pieces {
-  float: right;
-  right: 0;
+  position: relative;
   top: 0;
+  right: 0;
+  float: right;
   width: 30vw;
   height: 100vh;
-  position: relative;
   overflow: scroll; }
   .puzzle-pieces .transparent {
     opacity: 0.5; }
