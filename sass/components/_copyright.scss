@@ -1,0 +1,17 @@
+.copyright {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  color: $color-copyright;
+  font-weight: $font-weight-normal;
+  font-size: 1rem;
+
+  &__link {
+    &:link,
+    &:visited {
+      color: $color-copyright;
+      text-decoration: underline;
+    }
+  }
+}

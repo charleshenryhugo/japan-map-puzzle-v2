@@ -75,6 +75,18 @@ body {
   .btn--start:active, .btn--give-up:active, .btn--home:active {
     box-shadow: none; }
 
+.copyright {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  color: #918581;
+  font-weight: 400;
+  font-size: 1rem; }
+  .copyright__link:link, .copyright__link:visited {
+    color: #918581;
+    text-decoration: underline; }
+
 .puzzle-piece--initial {
   position: relative;
   display: inline-block;
